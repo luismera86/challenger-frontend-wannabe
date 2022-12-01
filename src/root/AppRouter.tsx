@@ -1,11 +1,15 @@
+import { Route, Routes } from 'react-router'
+
+import { Home } from '../pages'
 import { NavBar } from '../components'
-import { Routes } from 'react-router'
 
 const AppRouter = () => {
   return (
     <>
       <NavBar />
-      <Routes></Routes>
+      <Routes>
+        <Route path='/' element={ <Home/>} />
+      </Routes>
     </>
   )
 }
