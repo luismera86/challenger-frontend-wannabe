@@ -1,6 +1,6 @@
+import { Home, People } from '../pages'
 import { Route, Routes } from 'react-router'
 
-import { Home } from '../pages'
 import { NavBar } from '../components'
 
 const AppRouter = () => {
@@ -8,7 +8,9 @@ const AppRouter = () => {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={ <Home/>} />
+        <Route path='/' element={<Home />} />
+        <Route path='/people' element={<People />} />
+        
       </Routes>
     </>
   )

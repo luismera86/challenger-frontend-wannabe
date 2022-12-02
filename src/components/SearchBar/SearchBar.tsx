@@ -7,7 +7,7 @@ const SearchBar = () => {
         <Form>
           <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
             <Form.Label className='text-warning fs-5'>Buscar</Form.Label>
-            <Form.Control className='bg-dark' type='search' placeholder='Ingrese su búsqueda' />
+            <Form.Control className='bg-dark border-warning' type='search' placeholder='Ingrese su búsqueda' />
           </Form.Group>
         </Form>
       </Col>
