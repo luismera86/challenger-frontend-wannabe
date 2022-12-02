@@ -1,6 +1,24 @@
-import { useEffect, useState } from 'react'
-
 import { AxiosInstance } from 'axios'
+import { useState } from 'react'
+
+/* 
+This custom hook is made for use with the axios library.
+npm install axios
+How to use it: 
+- Create an instance of axios in api.tsx file.
+const api = axios.create({
+  baseURL: 'https://url.com/api',
+})
+
+- Calling the hook in the component
+const { } = useApi( api )
+
+- Elements to unstructured
+getApi: is a function that receives by parameter the path of the endpoint to be requested example: getApi("/people") 
+data: the server response
+isLoading: reference to the loading status of the request
+hasError: error response 
+*/
 
 const useApi = (api: AxiosInstance) => {
   const [apiState, setApiState] = useState({
@@ -25,12 +43,10 @@ const useApi = (api: AxiosInstance) => {
       setApiState({
         ...apiState,
         isLoading: false,
-        hasError: error
+        hasError: error,
       })
     }
   }
-
-  useEffect(() => {}, [api])
 
   return {
     data: apiState.data,
