@@ -19,13 +19,18 @@ data: the server response
 isLoading: reference to the loading status of the request
 hasError: error response 
 */
+interface ApiProps<T> {
+  api: AxiosInstance
+  data?: T 
+}
 
-const useApi = (api: AxiosInstance) => {
+const useApi = ( api: AxiosInstance) => {
   const [apiState, setApiState] = useState({
     data: null,
     isLoading: true,
     hasError: null,
   })
+
   const getApi = async (path: string) => {
     setApiState({
       ...apiState,
@@ -39,6 +44,7 @@ const useApi = (api: AxiosInstance) => {
         isLoading: false,
         hasError: null,
       })
+      return data
     } catch (error: any) {
       setApiState({
         ...apiState,
@@ -49,9 +55,7 @@ const useApi = (api: AxiosInstance) => {
   }
 
   return {
-    data: apiState.data,
-    isLoading: apiState.isLoading,
-    hasError: apiState.hasError,
+    apiState,
     getApi,
   }
 }

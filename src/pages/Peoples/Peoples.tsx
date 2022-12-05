@@ -1,15 +1,17 @@
 import { LayoutPages, ListContainer, SearchBar } from '../../components'
 
-import { PeopleProvider } from './context'
+import { PeoplesProvider } from './context'
 
-const People = () => {
+const Peoples = () => {
+
+
   return (
-    <PeopleProvider>
+    <PeoplesProvider>
       <LayoutPages title='PERSONAJES'>
         <SearchBar />
         <ListContainer />
       </LayoutPages>
-    </PeopleProvider>
+    </PeoplesProvider>
   )
 }
-export default People
+export default Peoples

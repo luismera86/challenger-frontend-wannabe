@@ -1,4 +1,4 @@
-import { Home, People } from '../pages'
+import { Home, Peoples } from '../pages'
 import { Route, Routes } from 'react-router'
 
 import { NavBar } from '../components'
@@ -9,7 +9,7 @@ const AppRouter = () => {
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/people' element={<People />} />
+        <Route path='/people' element={<Peoples />} />
         
       </Routes>
     </>
