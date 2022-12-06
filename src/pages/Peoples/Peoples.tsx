@@ -19,7 +19,7 @@ const Peoples = () => {
     <PeoplesProvider>
       <LayoutPages title='PERSONAJES'>
         <SearchBar />
-        <ListContainer peoples={peoples} details={false} />
+        {/* <ListContainer data={peoples} /> */}
       </LayoutPages>
     </PeoplesProvider>
   )

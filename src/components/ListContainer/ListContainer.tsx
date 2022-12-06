@@ -1,23 +1,34 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
+import { RespData } from '../../models'
 
-import { People } from '../../models'
-
-interface ListContainerProps {
-  peoples: People[]
-  details: boolean
-}
-
-const ListContainer = ({ peoples = [], details = false }: ListContainerProps) => {
-
+const ListContainer = ({results }: RespData) => {
+  
+  
   return (
     <Container>
-      {peoples.map((people) => (
-        <Row className='mt-3' key={people.name}>
-			  <Col xs={3}>{people.name} </Col>
-			  <Col><Button className='ms-3' variant='outline-warning' size='sm'>Detalles</Button></Col>
+      {results.map((d) => (
+        <Row className='mt-3' key={}>
+          <Col xs={3}>{d.name} </Col>
+          <Col>
+            <Button className='ms-3' variant='outline-warning' size='sm'>
+              Detalles
+            </Button>
+          </Col>
         </Row>
-	  ))}
-		  <Button variant='outline-warning'>Siguiente</Button>
+      ))}
+      {/* //TODO separa los botones en otro componente */}
+      <Row className='mt-4'>
+        <Col className=' d-flex justify-content-start'>
+          <Button className='' variant='outline-warning'>
+            Anterior
+          </Button>
+        </Col>
+        <Col className=' d-flex justify-content-end'>
+          <Button className='' variant='outline-warning'>
+            Siguiente
+          </Button>
+        </Col>
+      </Row>
     </Container>
   )
 }
