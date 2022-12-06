@@ -7,7 +7,7 @@ const SearchBar = () => {
 
   const onHandleChange = (event: any) => {
     setSearch(event.target.value)
-    console.log(search)
+    
   }
   return (
     <Row className=' d-flex flex-column align-content-center'>

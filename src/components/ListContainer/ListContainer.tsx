@@ -1,12 +1,11 @@
-import { Button, Col, Container, Row } from 'react-bootstrap'
-import { RespData } from '../../models'
+import { Container } from 'react-bootstrap'
 
-const ListContainer = ({results }: RespData) => {
+const ListContainer = () => {
   
   
   return (
     <Container>
-      {results.map((d) => (
+      {/* {results.map((d) => (
         <Row className='mt-3' key={}>
           <Col xs={3}>{d.name} </Col>
           <Col>
@@ -17,7 +16,7 @@ const ListContainer = ({results }: RespData) => {
         </Row>
       ))}
       {/* //TODO separa los botones en otro componente */}
-      <Row className='mt-4'>
+      {/* <Row className='mt-4'>
         <Col className=' d-flex justify-content-start'>
           <Button className='' variant='outline-warning'>
             Anterior
@@ -28,7 +27,7 @@ const ListContainer = ({results }: RespData) => {
             Siguiente
           </Button>
         </Col>
-      </Row>
+      </Row> */} 
     </Container>
   )
 }
