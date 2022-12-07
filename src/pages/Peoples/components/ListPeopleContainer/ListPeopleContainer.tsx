@@ -1,12 +1,14 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
-import { People, RespData } from '../../../../models'
 
-const ListPeopleContainer = ({ results }: RespData<People>) => {
+interface Props {
+  results: any[]
+}
+const ListPeopleContainer = ({ results }: Props) => {
   return (
     <Container>
-      {results?.map(({ name, url }) => (
-        <Row className='mt-3' key={name}>
-          <Col xs={3}>{name} </Col>
+      {results?.map((data) => (
+        <Row className='mt-3' key={data.name || data.title}>
+          <Col xs={3}>{data.name || data.title }  </Col>
           <Col>
             <Button className='ms-3' variant='outline-warning' size='sm'>
               Detalles

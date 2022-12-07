@@ -1,22 +1,16 @@
-import { LayoutPages, PaginationButtons, SearchBar } from '../../components'
+import { LayoutPages, ListContainer, PaginationButtons, SearchBar } from '../../components'
 import { getRespData, getSearchedData, getSearchedDataPage } from '../../redux/features/respData/respDataSlice'
+import { useAppDispatch, useAppSelector } from '../../redux/app/hooks'
 import { useEffect, useState } from 'react'
 
-import { ListPeopleContainer } from './components'
 import { PeoplesProvider } from './context'
-import { useAppDispatch } from '../../redux/app/hooks'
-import { useAppSelector } from '../../redux/app'
 
 const Peoples = () => {
   const peoples = useAppSelector((state) => state.data)
   const dispatch = useAppDispatch()
 
-  const { data, isLoading } = peoples
-  const { results, next } = data
-
   const [page, setPage] = useState(1)
   const [searchResults, setSearchResults] = useState('')
-  // todo revisar el tipado para hacer un slice generico la diferencia con film
 
   useEffect(() => {
     if (searchResults.length === 0) {
@@ -34,18 +28,15 @@ const Peoples = () => {
     }
   }, [searchResults])
 
+  const { data, isLoading } = peoples
+
+  const { results, next } = data
+
   return (
     <PeoplesProvider>
       <LayoutPages title='PERSONAJES'>
         <SearchBar searchResults={searchResults} setSearchResults={setSearchResults} />
-        {isLoading ? 
-          (
-            <div>Loading</div>
-          ) :
-          (
-            <ListPeopleContainer results={results} count={0} next={null} previous={null} />
-          )
-      }
+        {isLoading ? <div>Loading</div> : <ListContainer results={results} />}
         <PaginationButtons page={page} setPage={setPage} next={next} />
       </LayoutPages>
     </PeoplesProvider>
