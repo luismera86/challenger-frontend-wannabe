@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import peoplesReducer from '../features/peoples/peoplesSlice'
+import respData from '../features/respData/respDataSlice'
 
 export const store = configureStore({
   reducer: {
-    peoples: peoplesReducer
+    peoples: peoplesReducer,
+    data: respData
+    
   },
 })
 

@@ -1,5 +1,6 @@
 import { LayoutPages, PaginationButtons, SearchBar } from '../../components'
 import { getPeoples, getSearchedPeople, getSearchedPeoplePage } from '../../redux/features/peoples/peoplesSlice'
+import { getRespData, getSearchedData, getSearchedDataPage } from '../../redux/features/respData/respDataSlice'
 import { useEffect, useState } from 'react'
 
 import { ListPeopleContainer } from './components'
@@ -8,28 +9,29 @@ import { useAppDispatch } from '../../redux/app/hooks'
 import { useAppSelector } from '../../redux/app'
 
 const Peoples = () => {
-  const peoples = useAppSelector((state) => state.peoples)
+  const peoples = useAppSelector((state) => state.data)
   const dispatch = useAppDispatch()
 
   const { results } = peoples
 
   const [page, setPage] = useState(1)
   const [searchResults, setSearchResults] = useState('')
+// todo revisar el tipado para hacer un slice generico la diferencia con film
 
   useEffect(() => {
     if (searchResults.length === 0) {
-      dispatch(getPeoples(page))
+      dispatch(getRespData(`/people/?page=${page}`))
     } else {
-      dispatch(getSearchedPeoplePage(page))
+      dispatch(getSearchedDataPage(`/people/?search=l&page=${page}`))
     }
   }, [page])
 
   useEffect(() => {
     if (searchResults.length > 0) {
-      dispatch(getSearchedPeople(searchResults))
+      dispatch(getSearchedData(`/people/?search=${searchResults}`))
       
     } else {
-      dispatch(getPeoples(page))
+      dispatch(getRespData(`/people/?page=${page}`))
     }
   }, [searchResults])
 

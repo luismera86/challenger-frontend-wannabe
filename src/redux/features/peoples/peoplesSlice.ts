@@ -4,7 +4,7 @@ import { People, RespData } from '../../../models'
 import { AppDispatch } from '../../app'
 import { swapi } from '../../../config/api.config'
 
-const initialState: RespData<People> = {
+const initialState = {
   count: 0,
   next: null,
   previous: null,
@@ -15,10 +15,10 @@ export const peoplesSlice = createSlice({
   name: 'peoples',
   initialState,
   reducers: {
-    setPeople: (state, action: PayloadAction<RespData<People>>) => {
+    setPeople: (state, action) => {
       return action.payload
     },
-    searchPeople: (state, action: PayloadAction<RespData<People>>) => {
+    searchPeople: (state, action) => {
       return action.payload
     },
   },
