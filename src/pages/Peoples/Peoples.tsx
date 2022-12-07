@@ -1,4 +1,4 @@
-import { LayoutPages, ListContainer, PaginationButtons, SearchBar } from '../../components'
+import { LayoutPages, ListContainer, Loading, PaginationButtons, SearchBar } from '../../components'
 import { getRespData, getSearchedData, getSearchedDataPage } from '../../redux/features/respData/respDataSlice'
 import { useAppDispatch, useAppSelector } from '../../redux/app/hooks'
 import { useEffect, useState } from 'react'
@@ -36,7 +36,7 @@ const Peoples = () => {
     <PeoplesProvider>
       <LayoutPages title='PERSONAJES'>
         <SearchBar searchResults={searchResults} setSearchResults={setSearchResults} />
-        {isLoading ? <div>Loading</div> : <ListContainer results={results} />}
+        {isLoading ? <Loading /> : <ListContainer results={results} />}
         <PaginationButtons page={page} setPage={setPage} next={next} />
       </LayoutPages>
     </PeoplesProvider>
