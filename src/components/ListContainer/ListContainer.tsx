@@ -1,7 +1,6 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
 
-import { getDataDetails } from '../../redux/features/dataDetails/dataDetails'
-import { useAppDispatch } from '../../redux/app'
+import { useAppDispatch } from '@/redux'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
@@ -12,8 +11,21 @@ const ListContainer = ({ results }: Props) => {
   const navigate = useNavigate()
   
   const onHandleClick = (url: any) => {
-    dispatch(getDataDetails(url))
-    navigate('/dataDetails')
+    if (url.search('people') !== -1) {
+      // dispatch al slice que setee los detalles de characters
+      // navigate a /characterdetails
+    } else if (url.search('films') !== -1) {
+      
+    } else if (url.search('plantes') !== -1) {
+
+    } else if (url.search('species') !== -1) {
+
+    } else if (url.search('vehicle') !== -1) {
+
+    } else if (url.search('starship') !== -1) {
+      
+    }
+    
   }
 
   return (

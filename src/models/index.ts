@@ -5,4 +5,5 @@ export * from './Interfaces/RespData';
 export * from './Interfaces/Specie';
 export * from './Interfaces/Starship';
 export * from './Interfaces/Vehicle';
+export * from './enums/urls';
 export * from './index';

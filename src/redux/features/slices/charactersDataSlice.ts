@@ -1,66 +1,74 @@
-import { AppDispatch } from '../../app'
-import { createSlice } from '@reduxjs/toolkit'
-import { swapi } from '../../../config/api.config'
+import { People, RespData, Urls } from '@/models'
 
-const initialState = {
-  data: {
+import { AppDispatch } from '@/redux/app'
+import axios from 'axios'
+import { createSlice } from '@reduxjs/toolkit'
+
+const { Url_People } = Urls
+
+interface Props {
+  dataCharacters: RespData<People>
+  isLoading: boolean
+  error: string
+}
+
+const initialState: Props = {
+  dataCharacters: {
     count: 0,
-    next: '',
-    previous: '',
+    next: null,
+    previous: null,
     results: [],
   },
   error: '',
-  isLoading: true
+  isLoading: true,
 }
 
-export const respDataSlice = createSlice({
-  name: 'respData',
+const charactersDataSlice = createSlice({
+  name: 'charactersData',
   initialState,
   reducers: {
     setData: (state, action) => {
       state = {
         ...state,
-        data: action.payload
+        dataCharacters: action.payload,
       }
       return state
     },
-    searchData: (state, action) => {
+    setSearchData: (state, action) => {
       state = {
         ...state,
-        data: action.payload
+        dataCharacters: action.payload,
       }
       return state
     },
     setLoading: (state, action) => {
       state = {
         ...state,
-        isLoading: action.payload
+        isLoading: action.payload,
       }
       return state
     },
     setError: (state, action) => {
       state = {
         ...state,
-        error: action.payload
+        error: action.payload,
       }
       return state
-    }
-
-    
+    },
   },
 })
 
-export const { setData, searchData, setError, setLoading } = respDataSlice.actions
+const { setSearchData, setError, setData, setLoading } = charactersDataSlice.actions
 
-export default respDataSlice.reducer
+export default charactersDataSlice.reducer
 
 // thunks
 
-export const getRespData = (path: string) => {
+export const getRespData = (page: number) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {
-      const resp = await swapi.get(path)
+      const resp = await axios.get(`${Url_People}/?page=${page}`)
       const data = await resp.data
 
       dispatch(setData(data))
@@ -72,13 +80,13 @@ export const getRespData = (path: string) => {
   }
 }
 
-export const getSearchedData = (path: string) => {
+export const getSearchedData = (searchResults: string) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {
-      const resp = await swapi.get(path)
+      const resp = await axios.get(`${Url_People}/?page=$?search=${searchResults}`)
       const data = await resp.data
-      dispatch(searchData(data))
+      dispatch(setSearchData(data))
     } catch (error) {
       dispatch(setError(error))
     } finally {
@@ -87,11 +95,11 @@ export const getSearchedData = (path: string) => {
   }
 }
 
-export const getSearchedDataPage = (path: string) => {
+export const getSearchedDataPage = (page: number) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {
-      const resp = await swapi.get(path)
+      const resp = await axios.get(`${Url_People}/?search=l&page=${page}`)
       const data = await resp.data
 
       dispatch(setData(data))

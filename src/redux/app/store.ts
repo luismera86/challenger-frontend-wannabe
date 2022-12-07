@@ -1,13 +1,10 @@
+import { charactersDataSlice } from '../features'
 import { configureStore } from '@reduxjs/toolkit'
-import dataDetails from '../features/dataDetails/dataDetails'
-import peoplesReducer from '../features/peoples/peoplesSlice'
-import respData from '../features/respData/respDataSlice'
 
 export const store = configureStore({
   reducer: {
-    peoples: peoplesReducer,
-    data: respData,
-    dataDetails: dataDetails,
+    
+    charactersData: charactersDataSlice
   },
 })
 

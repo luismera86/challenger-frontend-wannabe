@@ -1,3 +1,3 @@
+export * from './Characters';
 export * from './Home';
-export * from './Peoples/context';
-export * from './Peoples';
+export * from './index';
