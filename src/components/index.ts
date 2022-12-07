@@ -1,4 +1,3 @@
-export * from './DataDetailsContainer';
 export * from './LayoutPages';
 export * from './ListContainer';
 export * from './Loading';

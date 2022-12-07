@@ -1,6 +1,7 @@
-import { DataDetailsContainer, NavBar } from '../components'
-import { Home, Peoples } from '../pages'
+import { Characters, Home } from '@/pages'
 import { Route, Routes } from 'react-router'
+
+import { NavBar } from '@/components'
 
 const AppRouter = () => {
   return (
@@ -8,8 +9,8 @@ const AppRouter = () => {
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/people' element={<Peoples />} />
-        <Route path='/dataDetails' element={<DataDetailsContainer />} />
+        <Route path='/characters' element={<Characters />} />
+        
         
       </Routes>
     </>

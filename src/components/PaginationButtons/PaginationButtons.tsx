@@ -9,8 +9,7 @@ interface Props {
 
 const PaginationButtons = ({ page, setPage, next }: Props) => {
   const onHandleClickNext = () => {
-    if(next !== null)
-    setPage(page + 1)
+    if (next !== null) setPage(page + 1)
   }
 
   const onHandleClickBack = () => {
@@ -29,9 +28,11 @@ const PaginationButtons = ({ page, setPage, next }: Props) => {
           )}
         </Col>
         <Col className=' d-flex justify-content-end'>
-          <Button className='' variant='outline-warning' onClick={onHandleClickNext}>
-            Siguiente
-          </Button>
+          {next !== null && (
+            <Button className='' variant='outline-warning' onClick={onHandleClickNext}>
+              Siguiente
+            </Button>
+          )}
         </Col>
       </Row>
     </Container>

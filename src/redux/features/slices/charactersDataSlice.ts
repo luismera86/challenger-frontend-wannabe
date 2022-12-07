@@ -84,7 +84,7 @@ export const getSearchedData = (searchResults: string) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {
-      const resp = await axios.get(`${Url_People}/?page=$?search=${searchResults}`)
+      const resp = await axios.get(`${Url_People}/?search=${searchResults}`)
       const data = await resp.data
       dispatch(setSearchData(data))
     } catch (error) {
