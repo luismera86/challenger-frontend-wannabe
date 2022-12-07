@@ -1,10 +1,12 @@
-import { charactersDataSlice } from '../features'
+import { charactersDataSlice, charactersDetailsSlice } from '../features'
+
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({
   reducer: {
     
-    charactersData: charactersDataSlice
+    charactersData: charactersDataSlice,
+    characterDetail: charactersDetailsSlice
   },
 })
 

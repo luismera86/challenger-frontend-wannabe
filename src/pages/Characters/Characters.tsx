@@ -1,5 +1,5 @@
 import { LayoutPages, ListContainer, Loading, PaginationButtons, SearchBar } from "@/components"
-import { getRespData, getSearchedData, getSearchedDataPage } from "@/redux/features/slices/charactersDataSlice"
+import { getRespData, getSearchedData, getSearchedDataPage } from "@/redux/features/slices/characters/charactersDataSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/app"
 import { useEffect, useState } from "react"
 
