@@ -1,13 +1,16 @@
 import { Col, Form, Row } from 'react-bootstrap'
 
-import { useState } from 'react'
+import { ChangeEvent } from 'react'
 
-const SearchBar = () => {
-  const [search, setSearch] = useState('')
+interface Props {
+  searchResults: string
+  setSearchResults: React.Dispatch<React.SetStateAction<string>>
+}
 
-  const onHandleChange = (event: any) => {
-    setSearch(event.target.value)
-    
+const SearchBar = ({ searchResults, setSearchResults }: Props) => {
+
+  const onHandleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchResults(event.target.value)
   }
   return (
     <Row className=' d-flex flex-column align-content-center'>
@@ -19,7 +22,7 @@ const SearchBar = () => {
               className='bg-dark border-warning text-warning'
               type='search'
               placeholder='Ingrese su búsqueda'
-              value={search}
+              value={searchResults}
               onChange={onHandleChange}
             />
           </Form.Group>

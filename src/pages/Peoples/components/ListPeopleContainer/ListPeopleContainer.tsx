@@ -1,11 +1,12 @@
-import { Button, Col, Container, Row } from "react-bootstrap"
+import { Button, Col, Container, Row } from 'react-bootstrap'
+import { People, RespData } from '../../../../models'
 
-const ListPeopleContainer = () => {
+const ListPeopleContainer = ({ results }: RespData<People>) => {
   return (
-	<Container>
-     {results.map((d) => (
-        <Row className='mt-3' key={}>
-          <Col xs={3}>{d.name} </Col>
+    <Container>
+      {results.map(({ name }) => (
+        <Row className='mt-3' key={name}>
+          <Col xs={3}>{name} </Col>
           <Col>
             <Button className='ms-3' variant='outline-warning' size='sm'>
               Detalles
@@ -13,8 +14,6 @@ const ListPeopleContainer = () => {
           </Col>
         </Row>
       ))}
-     
-      
     </Container>
   )
 }

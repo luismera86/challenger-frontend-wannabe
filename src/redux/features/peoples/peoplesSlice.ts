@@ -30,11 +30,12 @@ export default peoplesSlice.reducer
 
 // thunks
 
-export const getPeoples = () => {
+export const getPeoples = (page: number) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const resp = await swapi.get('/people')
+      const resp = await swapi.get(`/people/?page=${page}`)
       const data = await resp.data
+
       dispatch(setPeople(data))
     } catch (error) {
       console.log(error)
@@ -42,7 +43,7 @@ export const getPeoples = () => {
   }
 }
 
-export const searchedPeople = (value: string) => {
+export const getSearchedPeople = (value: string) => {
   return async (dispatch: AppDispatch) => {
     try {
       const resp = await swapi.get(`/people/?search=${value}`)
@@ -53,3 +54,18 @@ export const searchedPeople = (value: string) => {
     }
   }
 }
+
+export const getSearchedPeoplePage = (page: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const resp = await swapi.get(`/people/?search=l&page=${page}`)
+      const data = await resp.data
+
+      dispatch(setPeople(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+
