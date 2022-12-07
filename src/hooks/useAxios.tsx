@@ -12,11 +12,6 @@ export const useAxios = <T,>(
   const [data, setData] = useState<T>()
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    if (loadOnStart) sendRequest()
-    else setLoading(false)
-  }, [])
-
   const request = () => {
     sendRequest()
   }

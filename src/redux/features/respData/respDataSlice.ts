@@ -3,10 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 import { swapi } from '../../../config/api.config'
 
 const initialState = {
-  count: 0,
-  next: null,
-  previous: null,
-  results: [],
+  data: {
+    count: 0,
+    next: '',
+    previous: '',
+    results: [],
+  },
+  error: '',
+  isLoading: true
 }
 
 export const respDataSlice = createSlice({
@@ -14,15 +18,39 @@ export const respDataSlice = createSlice({
   initialState,
   reducers: {
     setData: (state, action) => {
-      return action.payload
+      state = {
+        ...state,
+        data: action.payload
+      }
+      return state
     },
     searchData: (state, action) => {
-      return action.payload
+      state = {
+        ...state,
+        data: action.payload
+      }
+      return state
     },
+    setLoading: (state, action) => {
+      state = {
+        ...state,
+        isLoading: action.payload
+      }
+      return state
+    },
+    setError: (state, action) => {
+      state = {
+        ...state,
+        error: action.payload
+      }
+      return state
+    }
+
+    
   },
 })
 
-export const { setData, searchData } = respDataSlice.actions
+export const { setData, searchData, setError, setLoading } = respDataSlice.actions
 
 export default respDataSlice.reducer
 
@@ -30,40 +58,47 @@ export default respDataSlice.reducer
 
 export const getRespData = (path: string) => {
   return async (dispatch: AppDispatch) => {
+    dispatch(setLoading(true))
     try {
       const resp = await swapi.get(path)
       const data = await resp.data
 
       dispatch(setData(data))
     } catch (error) {
-      console.log(error)
+      dispatch(setError(error))
+    } finally {
+      dispatch(setLoading(false))
     }
   }
 }
 
 export const getSearchedData = (path: string) => {
   return async (dispatch: AppDispatch) => {
+    dispatch(setLoading(true))
     try {
       const resp = await swapi.get(path)
       const data = await resp.data
       dispatch(searchData(data))
     } catch (error) {
-      console.log(error)
+      dispatch(setError(error))
+    } finally {
+      dispatch(setLoading(false))
     }
   }
 }
 
 export const getSearchedDataPage = (path: string) => {
   return async (dispatch: AppDispatch) => {
+    dispatch(setLoading(true))
     try {
       const resp = await swapi.get(path)
       const data = await resp.data
 
       dispatch(setData(data))
     } catch (error) {
-      console.log(error)
+      dispatch(setError(error))
+    } finally {
+      dispatch(setLoading(false))
     }
   }
 }
-
-

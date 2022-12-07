@@ -4,9 +4,9 @@ import { People, RespData } from '../../../../models'
 const ListPeopleContainer = ({ results }: RespData<People>) => {
   return (
     <Container>
-      {results?.map(({ name, films }) => (
+      {results?.map(({ name, url }) => (
         <Row className='mt-3' key={name}>
-          <Col xs={3}>{name} {films.length} </Col>
+          <Col xs={3}>{name} </Col>
           <Col>
             <Button className='ms-3' variant='outline-warning' size='sm'>
               Detalles
