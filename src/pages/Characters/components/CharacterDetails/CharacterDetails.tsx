@@ -5,7 +5,11 @@ import { useAppSelector } from '@/redux'
 
 const CharacterDetails = () => {
   const character = useAppSelector((state) => state.characterDetail)
+  
   const { data, isLoading } = character
+  
+  // todo tratar de mandar una por una las direcciones de los films y que valla guardando en un state nuevo los datos para poder usarlos con un map, puede ser en un hook que tenga un state charactersFilms setCharactersFilms() hacer un ciclo for que por cara iteración setee en reduce y los datos eso los setee en el state 
+
 
   return (
     <Container className='bg-black text-white-50' fluid>

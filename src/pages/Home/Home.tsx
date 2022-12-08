@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 const Home = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(getCharacterDetails('https://swapi.dev/api/people/2/'))
+   // Todo tratar de hacer un hook que haga un get a todos los data directamente
    
   }, [])
   
