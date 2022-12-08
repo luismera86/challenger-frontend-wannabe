@@ -23,14 +23,15 @@ const FilmDetails = () => {
               <Col>
                 <p>Titulo: {data.title}</p>
                 <p>Episodio: {data.episode_id}</p>
+                <p>Sinopsis: {data.opening_crawl}</p>
                 <p>Director: {data.director}</p>
                 <p>Productor: {data.producer}</p>
                 <p>Fecha de estreno: {data.release_date}</p>
                 <p>Personajes: {data.characters}</p>
                 <p>Planetas: {data.planets}</p>
                 <p>Naves Estelares: {data.starships}</p>
-                  <p>Naves: {data.vehicles}</p>
-                  <p>Especies: { data.species}</p>
+                <p>Naves: {data.vehicles}</p>
+                <p>Especies: {data.species}</p>
               </Col>
             </Row>
           </Container>

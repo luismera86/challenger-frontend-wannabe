@@ -2,14 +2,17 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 import { Loading } from '@/components'
 import { useAppSelector } from '@/redux'
+import { useEffect } from 'react'
+import { useGetFilms } from '@/hooks/useGetFilms'
 
 const CharacterDetails = () => {
   const character = useAppSelector((state) => state.characterDetail)
-  
-  const { data, isLoading } = character
-  
-  // todo tratar de mandar una por una las direcciones de los films y que valla guardando en un state nuevo los datos para poder usarlos con un map, puede ser en un hook que tenga un state charactersFilms setCharactersFilms() hacer un ciclo for que por cara iteración setee en reduce y los datos eso los setee en el state 
 
+  const { data, isLoading } = character
+  const { requestFilms, listTitles } = useGetFilms()
+  useEffect(() => {
+    requestFilms(data.films)
+  }, [])
 
   return (
     <Container className='bg-black text-white-50' fluid>
@@ -34,8 +37,10 @@ const CharacterDetails = () => {
                 <p>Año de nacimiento: {data.birth_year}</p>
                 <p>Sexo: {data.gender}</p>
                 <p>Mundo: {data.homeworld}</p>
-                <p>Películas: {data.films}</p>
-
+                <p>Películas:
+                {listTitles.map((f, index) => (
+                  <span  key={index}>{f} - </span>
+                ))}  </p>
               </Col>
             </Row>
           </Container>
