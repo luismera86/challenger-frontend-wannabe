@@ -30,11 +30,8 @@ const CharacterDetails = () => {
                 <p>Año de nacimiento: {data.birth_year}</p>
                 <p>Sexo: {data.gender}</p>
                 <p>Mundo: {data.homeworld}</p>
-                <p>Películas: </p>
+                <p>Películas: {data.films}</p>
 
-                {data.films.map((f) => (
-                  <div key={f}>{f}</div>
-                ))}
               </Col>
             </Row>
           </Container>

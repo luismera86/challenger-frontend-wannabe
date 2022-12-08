@@ -23,7 +23,7 @@ const ListContainer = ({ results }: Props) => {
     } else if (url.search('films') !== -1) {
       dispatch(getFilmsDetails(url))
       navigate('/filmdetails')
-    } else if (url.search('plantes') !== -1) {
+    } else if (url.search('planets') !== -1) {
       dispatch(getPlanetDetails(url))
       navigate('/planetdetails')
     } else if (url.search('species') !== -1) {
@@ -39,7 +39,7 @@ const ListContainer = ({ results }: Props) => {
   }
 
   return (
-    <Container>
+    <Container className='text-white-50 fs-5'>
       {results?.map((data) => (
         <Row className='mt-3' key={data.name || data.title}>
           <Col xs={3}>{data.name || data.title} </Col>
