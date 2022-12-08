@@ -1,4 +1,4 @@
-import { Container, Image, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 
 import { NavLink } from 'react-router-dom'
 
@@ -6,31 +6,28 @@ const NavBar = () => {
   return (
     <Navbar bg='dark' variant='dark'>
       <Container>
-        <Navbar.Brand className='text-warning' href='#home'>
+        <NavLink className='text-warning m-2 text-decoration-none' to='/'>
           SWAPI
-        </Navbar.Brand>
+        </NavLink>
         <Nav className='me-auto'>
-          <NavLink className='text-warning' to='/characters'>
+          <NavLink className='text-warning m-2 text-decoration-none' to='/characters'>
             Personajes
           </NavLink>
-          <NavLink to='/films'>
-          
+          <NavLink className='text-warning m-2 text-decoration-none' to='/films'>
             Películas
-          
           </NavLink>
-          
-          <Nav.Link className='text-warning' href='#pricing'>
+          <NavLink className='text-warning m-2 text-decoration-none' to='/starships'>
             Naves Estelares
-          </Nav.Link>
-          <Nav.Link className='text-warning' href='#pricing'>
+          </NavLink>
+          <NavLink className='text-warning m-2 text-decoration-none' to='/vehicles'>
             Vehículos
-          </Nav.Link>
-          <Nav.Link className='text-warning' href='#pricing'>
+          </NavLink>
+          <NavLink className='text-warning m-2 text-decoration-none' to='/species'>
             Especies
-          </Nav.Link>
-          <Nav.Link className='text-warning' href='#pricing'>
+          </NavLink>
+          <NavLink className='text-warning m-2 text-decoration-none' to='/planets'>
             Planetas
-          </Nav.Link>
+          </NavLink>
         </Nav>
       </Container>
     </Navbar>
