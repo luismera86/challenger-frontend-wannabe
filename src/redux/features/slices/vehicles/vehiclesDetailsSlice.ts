@@ -1,10 +1,10 @@
 import { AppDispatch } from '@/redux/app'
-import { People } from '@/models'
+import { Vehicle } from '@/models'
 import axios from 'axios'
 import { createSlice } from '@reduxjs/toolkit'
 
 interface Props {
-  data: People
+  data: Vehicle
   error: string
   isLoading: boolean
 }
@@ -12,26 +12,26 @@ interface Props {
 const initialState: Props = {
   data: {
     name: '',
-    height: '',
-    mass: '',
-    hair_color: '',
-    skin_color: '',
-    eye_color: '',
-    birth_year: '',
-    gender: '',
-    homeworld: '',
+    model: '',
+    manufacturer: '',
+    cost_in_credits: '',
+    length: '',
+    max_atmosphering_speed: '',
+    crew: '',
+    passengers: '',
+    cargo_capacity: '',
+    consumables: '',
+    vehicle_class: '',
+    pilots: [],
     films: [],
-    species: [],
-    vehicles: [],
-    starships: [],
     url: '',
   },
   error: '',
   isLoading: true,
 }
 
-const characterDetailsSlice = createSlice({
-  name: 'characterDetails',
+const vehicleDetailsSlice = createSlice({
+  name: 'vehicleDetails',
   initialState,
   reducers: {
     setData: (state, action) => {
@@ -58,13 +58,13 @@ const characterDetailsSlice = createSlice({
   },
 })
 
-const { setData, setError, setLoading } = characterDetailsSlice.actions
+const { setData, setError, setLoading } = vehicleDetailsSlice.actions
 
-export default characterDetailsSlice.reducer
+export default vehicleDetailsSlice.reducer
 
 // thunks
 
-export const getCharacterDetails = (url: string) => {
+export const getVehicleDetails = (url: string) => {
   return async (dispatch: AppDispatch) => {
     
     try {

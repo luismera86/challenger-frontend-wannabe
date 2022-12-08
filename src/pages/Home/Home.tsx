@@ -1,6 +1,16 @@
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap';
+
+import { getCharacterDetails } from '@/redux/features/slices/characters/charactersDetailsSlice';
+import { useAppDispatch } from '@/redux';
+import { useEffect } from 'react';
 
 const Home = () => {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(getCharacterDetails('https://swapi.dev/api/people/2/'))
+   
+  }, [])
+  
   return (
     <Container className=' d-flex flex-column bg-black' fluid>
       <Row>

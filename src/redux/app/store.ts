@@ -1,12 +1,34 @@
-import { charactersDataSlice, charactersDetailsSlice } from '../features'
+import {
+  charactersDataSlice,
+  charactersDetailsSlice,
+  filmsDataSlice,
+  filmsDetailsSlice,
+  planetsDataSlice,
+  planetsDetailsSlice,
+  speciesDataSlice,
+  speciesDetailsSlice,
+  starShipsDataSlice,
+  starShipsDetailsSlice,
+  vehiclesDataSlice,
+  vehiclesDetailsSlice,
+} from '../features'
 
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({
   reducer: {
-    
     charactersData: charactersDataSlice,
-    characterDetail: charactersDetailsSlice
+    characterDetail: charactersDetailsSlice,
+    filmsData: filmsDataSlice,
+    filmsDetail: filmsDetailsSlice,
+    planetsData: planetsDataSlice,
+    planetDetails: planetsDetailsSlice,
+    speciesData: speciesDataSlice,
+    speciesDetails: speciesDetailsSlice,
+    starShipsData: starShipsDataSlice,
+    starShipDetails: starShipsDetailsSlice,
+    vehiclesData: vehiclesDataSlice,
+    vehiclesDetails: vehiclesDetailsSlice,
   },
 })
 

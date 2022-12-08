@@ -1,5 +1,6 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
 
+import { getCharacterDetails } from '@/redux/features/slices/characters/charactersDetailsSlice'
 import { useAppDispatch } from '@/redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,11 +10,11 @@ interface Props {
 const ListContainer = ({ results }: Props) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  
+
   const onHandleClick = (url: any) => {
     if (url.search('people') !== -1) {
-      // dispatch al slice que setee los detalles de characters
-      // navigate a /characterdetails
+      dispatch(getCharacterDetails(url))
+      navigate('/characterdetails')
     } else if (url.search('films') !== -1) {
       
     } else if (url.search('plantes') !== -1) {
@@ -25,8 +26,9 @@ const ListContainer = ({ results }: Props) => {
     } else if (url.search('starship') !== -1) {
       
     }
-    
-  }
+
+}
+  
 
   return (
     <Container>

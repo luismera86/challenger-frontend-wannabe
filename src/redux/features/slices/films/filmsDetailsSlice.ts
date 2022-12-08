@@ -1,37 +1,36 @@
 import { AppDispatch } from '@/redux/app'
-import { People } from '@/models'
+import { Film } from '@/models'
 import axios from 'axios'
 import { createSlice } from '@reduxjs/toolkit'
 
 interface Props {
-  data: People
+  data: Film
   error: string
   isLoading: boolean
 }
 
 const initialState: Props = {
   data: {
-    name: '',
-    height: '',
-    mass: '',
-    hair_color: '',
-    skin_color: '',
-    eye_color: '',
-    birth_year: '',
-    gender: '',
-    homeworld: '',
-    films: [],
-    species: [],
-    vehicles: [],
+    title: '',
+    episode_id: 0,
+    opening_crawl: '',
+    director: '',
+    producer: '',
+    release_date: '',
+    characters: [],
+    planets: [],
     starships: [],
+    vehicles: [],
+    species: [],
+    
     url: '',
   },
   error: '',
   isLoading: true,
 }
 
-const characterDetailsSlice = createSlice({
-  name: 'characterDetails',
+const filmsDetailsSlice = createSlice({
+  name: 'filmsDetails',
   initialState,
   reducers: {
     setData: (state, action) => {
@@ -58,13 +57,13 @@ const characterDetailsSlice = createSlice({
   },
 })
 
-const { setData, setError, setLoading } = characterDetailsSlice.actions
+const { setData, setError, setLoading } = filmsDetailsSlice.actions
 
-export default characterDetailsSlice.reducer
+export default filmsDetailsSlice.reducer
 
 // thunks
 
-export const getCharacterDetails = (url: string) => {
+export const getFilmsDetails = (url: string) => {
   return async (dispatch: AppDispatch) => {
     
     try {
