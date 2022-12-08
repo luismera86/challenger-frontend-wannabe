@@ -66,7 +66,6 @@ export default filmsDataSlice.reducer
 
 export const getRespData = (page: number) => {
   return async (dispatch: AppDispatch) => {
-    dispatch(setLoading(true))
     try {
       const resp = await axios.get(`${Url_Films}/?page=${page}`)
       const data = await resp.data
