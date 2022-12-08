@@ -1,18 +1,28 @@
-import { Col, Container, Row } from 'react-bootstrap'
+import { Button, Col, Container, Row } from 'react-bootstrap'
+import { useAppDispatch, useAppSelector } from '@/redux'
 
 import { Loading } from '@/components'
-import { useAppSelector } from '@/redux'
-import { useEffect } from 'react'
-import { useGetFilms } from '@/hooks/useGetFilms'
+import { getFilmsDetails } from '@/redux/features/slices/films/filmsDetailsSlice'
+import { getPlanetDetails } from '@/redux/features/slices/planets/planetsDetailsSlice'
+import { useNavigate } from 'react-router-dom'
 
 const CharacterDetails = () => {
   const character = useAppSelector((state) => state.characterDetail)
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const { data, isLoading } = character
-  const { requestFilms, listTitles } = useGetFilms()
-  useEffect(() => {
-    requestFilms(data.films)
-  }, [])
+
+  const onHandledRedirectPlanet = () => {
+    dispatch(getPlanetDetails(data.homeworld.link))
+    navigate('/planetdetails')
+  }
+
+  const onHandleRedirectFilm = (url: string) => {
+    dispatch(getFilmsDetails(url))
+    navigate('/filmdetails')  
+  }
+  
 
   return (
     <Container className='bg-black text-white-50' fluid>
@@ -36,11 +46,16 @@ const CharacterDetails = () => {
                 <p>Color de Ojos: {data.eye_color}</p>
                 <p>Año de nacimiento: {data.birth_year}</p>
                 <p>Sexo: {data.gender}</p>
-                <p>Mundo: {data.homeworld}</p>
-                <p>Películas:
-                {listTitles.map((f, index) => (
-                  <span  key={index}>{f} - </span>
-                ))}  </p>
+                <p>
+                  Planeta: <span className='links' onClick={onHandledRedirectPlanet}>{data.homeworld.name}</span>
+                </p>
+                <p>Especie: {!!data.species && 'n/a'}</p>
+                <p>
+                  Películas:
+                  {data.films.map((f, index) => (
+                    <span className='links' onClick={() => onHandleRedirectFilm(f.link)} key={index}> {f.name} - </span>
+                  ))}
+                </p>
               </Col>
             </Row>
           </Container>

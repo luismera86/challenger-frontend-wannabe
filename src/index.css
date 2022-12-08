@@ -349,3 +349,12 @@ template {
 [hidden] {
   display: none;
 }
+
+.links{
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.links:hover {
+  color: yellow;
+}
