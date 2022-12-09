@@ -90,32 +90,59 @@ export const getCharacterDetails = (url: string) => {
       const resp = await axios.get(url)
       const data = resp.data
       dispatch(setData(data))
-      dispatch(setFilms([]))
-
-      let filmsNames: object[] = []
-      data.films.forEach(async (url: string) => {
-        const resp2 = await axios.get(url)
-        const data2 = await resp2.data
-
-        filmsNames = [...filmsNames, {
-          name: data2.title,
-          link: url
-        }]
-        dispatch(setFilms(filmsNames))
-      })
-
-      
-      const resp3 = await axios.get(data.homeworld)
-      const data3 = await resp3.data
-
-      dispatch(setPlanet({
-        name: data3.name,
-        link: data.homeworld
-      }))
+      dispatch(setterFilms(data))
+      dispatch(setterPlanet(data))
     } catch (error) {
       dispatch(setError(error))
     } finally {
       dispatch(setLoading(false))
+    }
+  }
+}
+
+const setterFilms = (data: any) => {
+  return (dispatch: AppDispatch) => {
+    dispatch(setLoading(true))
+    try {
+      dispatch(setFilms([]))
+
+      let filmsNames: object[] = []
+      data.films.forEach(async (url: string) => {
+        const resp = await axios.get(url)
+        const data = await resp.data
+
+        filmsNames = [
+          ...filmsNames,
+          {
+            name: data.title,
+            link: url,
+          },
+        ]
+        dispatch(setFilms(filmsNames))
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+const setterPlanet = (data: any) => {
+  return async (dispatch: AppDispatch) => {
+    dispatch(setLoading(true))
+    try {
+      dispatch(setPlanet([]))
+
+      const resp = await axios.get(data.homeworld)
+      const datar = await resp.data
+
+      dispatch(
+        setPlanet({
+          name: datar.name,
+          link: datar.homeworld,
+        })
+      )
+    } catch (error) {
+      console.log(error)
     }
   }
 }

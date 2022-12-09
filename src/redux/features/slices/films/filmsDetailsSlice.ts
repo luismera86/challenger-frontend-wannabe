@@ -110,6 +110,8 @@ export const getFilmsDetails = (url: string) => {
       dispatch(setterCharacters(data))
       dispatch(setterPlantes(data))
       dispatch(setterStarShips(data))
+      dispatch(setterVehicles(data))
+      dispatch(setterSpecies(data))
      
     } catch (error) {
       dispatch(setError(error))
@@ -126,11 +128,14 @@ const setterCharacters = (data: any) => {
     try {
       dispatch(setCharacters([]))
 
-      let charactersNames: string[] = []
+      let charactersNames: object[] = []
       data.characters.forEach(async (url: string) => {
         const resp = await axios.get(url)
         const data = await resp.data
-        charactersNames = [...charactersNames, data.name]
+        charactersNames = [...charactersNames, {
+          name: data.name,
+          link: url
+        }]
         dispatch(setCharacters(charactersNames))
       })
     } catch (error) {
@@ -145,11 +150,14 @@ const setterPlantes = (data: any) => {
     try {
       dispatch(setPlanets([]))
 
-      let planetsNames: string[] = []
+      let planetsNames: object[] = []
       data.planets.forEach(async (url: string) => {
         const resp = await axios.get(url)
         const data = await resp.data
-        planetsNames = [...planetsNames, data.name]
+        planetsNames = [...planetsNames, {
+          name: data.name,
+          link: url
+        }]
         dispatch(setPlanets(planetsNames))
       })
     } catch (error) {
@@ -164,12 +172,59 @@ const setterStarShips = (data: any) => {
     try {
       dispatch(setStarShips([]))
 
-      let starShipsNames: string[] = []
+      let starShipsNames: object[] = []
       data.starships.forEach(async (url: string) => {
         const resp = await axios.get(url)
         const data = await resp.data
-        starShipsNames = [...starShipsNames, data.name]
+        starShipsNames = [...starShipsNames, {
+          name: data.name,
+          link: url
+        }]
         dispatch(setStarShips(starShipsNames))
+      })
+    } catch (error) {
+      console.log(error)
+    } 
+  }
+}
+
+const setterVehicles = (data: any) => {
+  return (dispatch: AppDispatch) => {
+    dispatch(setLoading(true))
+    try {
+      dispatch(setVehicles([]))
+
+      let vehiclesNames: object[] = []
+      data.vehicles.forEach(async (url: string) => {
+        const resp = await axios.get(url)
+        const data = await resp.data
+        vehiclesNames = [...vehiclesNames, {
+          name: data.name,
+          link: url
+        }]
+        dispatch(setVehicles(vehiclesNames))
+      })
+    } catch (error) {
+      console.log(error)
+    } 
+  }
+}
+
+const setterSpecies = (data: any) => {
+  return (dispatch: AppDispatch) => {
+    dispatch(setLoading(true))
+    try {
+      dispatch(setSpecies([]))
+
+      let speciesNames: object[] = []
+      data.species.forEach(async (url: string) => {
+        const resp = await axios.get(url)
+        const data = await resp.data
+        speciesNames = [...speciesNames, {
+          name: data.name,
+          link: url
+        }]
+        dispatch(setSpecies(speciesNames))
       })
     } catch (error) {
       console.log(error)

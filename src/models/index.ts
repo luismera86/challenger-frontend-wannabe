@@ -1,4 +1,5 @@
 export * from './Interfaces/Film';
+export * from './Interfaces/NameAnLink';
 export * from './Interfaces/People';
 export * from './Interfaces/Planet';
 export * from './Interfaces/RespData';

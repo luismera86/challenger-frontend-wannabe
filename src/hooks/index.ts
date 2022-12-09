@@ -1,2 +1,2 @@
-export * from './useGetFilms';
-export * from './useGetPlanet';
+export * from './index';
+export * from './useLink';

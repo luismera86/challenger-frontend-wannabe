@@ -1,3 +1,4 @@
+import { NameAndLink } from "./NameAnLink"
 
 export interface People {
   name: string
@@ -8,16 +9,13 @@ export interface People {
   eye_color: string
   birth_year: string
   gender: string
-  homeworld: ObjetGeneric
-  films: ObjetGeneric[]
+  homeworld: NameAndLink
+  films: NameAndLink[]
   species: any[]
   vehicles: string[]
   starships: string[]
   url: string
 }
 
-interface ObjetGeneric {
-    name: string
-    link: string
-}
+
 

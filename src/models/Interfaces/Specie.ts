@@ -1,3 +1,5 @@
+import { NameAndLink } from "./NameAnLink"
+
 export interface Specie {
   name: string
   classification: string
@@ -7,9 +9,9 @@ export interface Specie {
   hair_colors: string
   eye_colors: string
   average_lifespan: string
-  homeworld: null | string
+  homeworld: NameAndLink
   language: string
-  people: string[]
-  films: string[]
+  people: NameAndLink[]
+  films: NameAndLink[]
   url: string
 }

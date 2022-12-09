@@ -1,28 +1,14 @@
-import { Button, Col, Container, Row } from 'react-bootstrap'
-import { useAppDispatch, useAppSelector } from '@/redux'
+import { Col, Container, Row } from 'react-bootstrap'
 
 import { Loading } from '@/components'
-import { getFilmsDetails } from '@/redux/features/slices/films/filmsDetailsSlice'
-import { getPlanetDetails } from '@/redux/features/slices/planets/planetsDetailsSlice'
-import { useNavigate } from 'react-router-dom'
+import { useAppSelector } from '@/redux'
+import { useLink } from '@/hooks'
 
 const CharacterDetails = () => {
   const character = useAppSelector((state) => state.characterDetail)
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
 
   const { data, isLoading } = character
-
-  const onHandledRedirectPlanet = () => {
-    dispatch(getPlanetDetails(data.homeworld.link))
-    navigate('/planetdetails')
-  }
-
-  const onHandleRedirectFilm = (url: string) => {
-    dispatch(getFilmsDetails(url))
-    navigate('/filmdetails')  
-  }
-  
+  const { onHandledRedirectPlanet, onHandleRedirectFilm } = useLink()
 
   return (
     <Container className='bg-black text-white-50' fluid>
@@ -47,13 +33,18 @@ const CharacterDetails = () => {
                 <p>Año de nacimiento: {data.birth_year}</p>
                 <p>Sexo: {data.gender}</p>
                 <p>
-                  Planeta: <span className='links' onClick={onHandledRedirectPlanet}>{data.homeworld.name}</span>
+                  Planeta:
+                  <span className='ms-1 links' onClick={() => onHandledRedirectPlanet(data.homeworld.link)}>
+                    {data.homeworld.name}
+                  </span>
                 </p>
                 <p>Especie: {!!data.species && 'n/a'}</p>
                 <p>
                   Películas:
                   {data.films.map((f, index) => (
-                    <span className='links' onClick={() => onHandleRedirectFilm(f.link)} key={index}> {f.name} - </span>
+                    <span className='ms-1 links' onClick={() => onHandleRedirectFilm(f.link)} key={index}>
+                      {f.name} -
+                    </span>
                   ))}
                 </p>
               </Col>

@@ -1,3 +1,5 @@
+import { NameAndLink } from "./NameAnLink"
+
 export interface Planet {
   name: string
   rotation_period: string
@@ -8,7 +10,7 @@ export interface Planet {
   terrain: string
   surface_water: string
   population: string
-  residents: string[]
-  films: string[]
+  residents: NameAndLink[]
+  films: NameAndLink[]
   url: string
 }

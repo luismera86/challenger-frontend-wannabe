@@ -2,10 +2,13 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 import { Loading } from '@/components'
 import { useAppSelector } from '@/redux'
+import { useLink } from '@/hooks'
 
 const PlanetDetails = () => {
   const planet = useAppSelector((state) => state.planetDetails)
   const { data, isLoading } = planet
+
+  const {onHandleRedirectFilm, onHandleRedirectCharacter} = useLink()
 
   return (
     <Container className='bg-black text-white-50' fluid>
@@ -30,8 +33,16 @@ const PlanetDetails = () => {
                 <p>Terreno: {data.terrain}</p>
                 <p>Superficie de agua: {data.surface_water}</p>
                 <p>Población: {data.population}</p>
-                <p>Residentes: {data.residents} </p>
-                <p>Películas: {data.films} </p>
+                <p>Pilotos: {data.residents.map((p, index) => (
+                    <span className='ms-1 links' onClick={() => onHandleRedirectCharacter(p.link)} key={index}>
+                      {p.name} -
+                    </span>
+                  ))}</p>
+                <p>Películas: {data.films.map((f, index) => (
+                    <span className='ms-1 links' onClick={() => onHandleRedirectFilm(f.link)} key={index}>
+                      {f.name} -
+                    </span>
+                  ))}</p>
               </Col>
             </Row>
           </Container>

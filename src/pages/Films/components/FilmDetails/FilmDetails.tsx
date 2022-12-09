@@ -2,10 +2,14 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 import { Loading } from '@/components'
 import { useAppSelector } from '@/redux'
+import { useLink } from '@/hooks'
 
 const FilmDetails = () => {
   const films = useAppSelector((state) => state.filmsDetail)
   const { data, isLoading } = films
+  
+  const {onHandleRedirectCharacter, onHandleRedirectSpecie, onHandleRedirectStarShip,onHandleRedirectVehicle, onHandledRedirectPlanet} = useLink()
+ 
 
   return (
     <Container className='bg-black text-white-50' fluid>
@@ -27,11 +31,46 @@ const FilmDetails = () => {
                 <p>Director: {data.director}</p>
                 <p>Productor: {data.producer}</p>
                 <p>Fecha de estreno: {data.release_date}</p>
-                <p>Personajes: {data.characters}</p>
-                <p>Planetas: {data.planets}</p>
-                <p>Naves Estelares: {data.starships}</p>
-                <p>Naves: {data.vehicles}</p>
-                <p>Especies: {data.species}</p>
+                <p>
+                  Personajes:
+                  {data.characters.map((p, index) => (
+                    <span onClick={() => onHandleRedirectCharacter(p.link)} className='ms-1 links' key={index}>
+                      {p.name} -
+                    </span>
+                  ))}
+                </p>
+                <p>
+                  Planetas:
+                  {data.planets.map((p, index) => (
+                    <span onClick={() => onHandledRedirectPlanet(p.link)} className='ms-1 links' key={index}>
+                      {p.name} -
+                    </span>
+                  ))}
+                </p>
+                <p>
+                  Naves Estelares:
+                  {data.starships.map((p, index) => (
+                    <span onClick={() => onHandleRedirectStarShip(p.link)} className='ms-1 links' key={index}>
+                      {p.name} -
+                    </span>
+                  ))}
+                </p>
+                <p>
+                  Naves:
+                  {data.vehicles.map((p, index) => (
+                    <span onClick={() => onHandleRedirectVehicle(p.link)} className='ms-1 links' key={index}>
+                      {p.name} -
+                    </span>
+                  ))}
+                </p>
+                <p>
+                  Especies:
+                  {data.species.map((p, index) => (
+                    <span onClick={() => onHandleRedirectSpecie(p.link)} className='ms-1 links' key={index}>
+                      {p.name} -
+                    </span>
+                  ))}
+                </p>
               </Col>
             </Row>
           </Container>

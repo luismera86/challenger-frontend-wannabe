@@ -2,10 +2,13 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 import { Loading } from '@/components'
 import { useAppSelector } from '@/redux'
+import { useLink } from '@/hooks'
 
 const SpecieDetails = () => {
   const specie = useAppSelector((state) => state.speciesDetails)
   const { data, isLoading } = specie
+
+  const { onHandledRedirectPlanet, onHandleRedirectFilm, onHandleRedirectCharacter } = useLink()
 
   return (
     <Container className='bg-black text-white-50' fluid>
@@ -28,10 +31,26 @@ const SpecieDetails = () => {
                 <p>Color de piel: {data.skin_colors}</p>
                 <p>Color de Ojos: {data.eye_colors}</p>
                 <p>Esperanza de vida: {data.average_lifespan}</p>
-                <p>Mundo: {data.homeworld}</p>
+                <p>
+                  Planeta:
+                  <span className='ms-1 links' onClick={() => onHandledRedirectPlanet(data.homeworld.link)}>
+                    {data.homeworld.name}
+                  </span>
+                </p>
                 <p>Idioma: {data.language}</p>
-                <p>Gente: {data.people}</p>
-                <p>Películas: {data.films}</p>
+                <p>Personas: {data.people.map((p, index) => (
+                    <span className='ms-1 links' onClick={() => onHandleRedirectCharacter(p.link)} key={index}>
+                      {p.name} -
+                    </span>
+                  ))}</p>
+                <p>
+                  Películas:
+                  {data.films.map((f, index) => (
+                    <span className='ms-1 links' onClick={() => onHandleRedirectFilm(f.link)} key={index}>
+                      {f.name} -
+                    </span>
+                  ))}
+                </p>
               </Col>
             </Row>
           </Container>

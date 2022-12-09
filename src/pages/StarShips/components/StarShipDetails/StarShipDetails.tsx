@@ -2,10 +2,12 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 import { Loading } from '@/components'
 import { useAppSelector } from '@/redux'
+import { useLink } from '@/hooks'
 
 const StarShipDetails = () => {
   const starShip = useAppSelector((state) => state.starShipDetails)
   const { data, isLoading } = starShip
+  const {onHandleRedirectFilm, onHandleRedirectCharacter} = useLink()
 
   return (
     <Container className='bg-black text-white-50' fluid>
@@ -32,8 +34,16 @@ const StarShipDetails = () => {
                 <p>Capacidad de carga: {data.cargo_capacity}</p>
                 <p>Consumibles: {data.consumables}</p>
                 <p>Clase de Nave: {data.starship_class}</p>
-                <p>Pilotos: {data.pilots}</p>
-                <p>Películas: {data.films}</p>
+                <p>Pilotos: {data.pilots.map((p, index) => (
+                    <span className='ms-1 links' onClick={() => onHandleRedirectCharacter(p.link)} key={index}>
+                      {p.name} -
+                    </span>
+                  ))}</p>
+                <p>Películas: {data.films.map((f, index) => (
+                    <span className='ms-1 links' onClick={() => onHandleRedirectFilm(f.link)} key={index}>
+                      {f.name} -
+                    </span>
+                  ))}</p>
               </Col>
             </Row>
           </Container>

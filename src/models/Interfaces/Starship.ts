@@ -1,3 +1,5 @@
+import { NameAndLink } from "./NameAnLink"
+
 export interface Starship {
   name: string
   model: string
@@ -12,7 +14,7 @@ export interface Starship {
   hyperdrive_rating: string
   MGLT: string
   starship_class: string
-  pilots: string[]
-  films: string[]
+  pilots: NameAndLink[]
+  films: NameAndLink[]
   url: string
 }

@@ -1,3 +1,5 @@
+import { NameAndLink } from "./NameAnLink"
+
 export interface Film {
     title: string
     episode_id: number
@@ -5,10 +7,11 @@ export interface Film {
     director: string
     producer: string
     release_date: string
-    characters: string[]
-    planets: string[]
-    starships: string[]
-    vehicles: string[]
-    species: string[]
+    characters: NameAndLink[]
+    planets: NameAndLink[]
+    starships: NameAndLink[]
+    vehicles: NameAndLink[]
+    species: NameAndLink[]
     url: string
-  }
+}
+  
