@@ -7,7 +7,8 @@ import { useLink } from '@/hooks'
 const StarshipDetails = () => {
   const starship = useAppSelector((state) => state.starshipDetails)
   const { data, isLoading } = starship
-  const {onHandleRedirectFilm, onHandleRedirectCharacter} = useLink()
+  const { onHandleRedirectFilm, onHandleRedirectCharacter } = useLink()
+  
 
   return (
     <Container className='bg-black text-white-50' fluid>
