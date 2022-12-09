@@ -1,1 +1,1 @@
-export * from './StarShipDetails';
+export * from './StarshipDetails';

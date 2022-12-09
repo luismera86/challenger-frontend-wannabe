@@ -20,7 +20,7 @@ const ListContainer = ({ results }: Props) => {
   const {
     onHandleRedirectCharacter,
     onHandleRedirectSpecie,
-    onHandleRedirectStarShip,
+    onHandleRedirectStarship,
     onHandleRedirectVehicle,
     onHandledRedirectPlanet,
     onHandleRedirectFilm,
@@ -39,7 +39,7 @@ const ListContainer = ({ results }: Props) => {
     } else if (url.search('vehicle') !== -1) {
       onHandleRedirectVehicle(url)
     } else if (url.search('starship') !== -1) {
-      onHandleRedirectStarShip(url)
+      onHandleRedirectStarship(url)
     }
   }
 

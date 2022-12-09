@@ -32,8 +32,8 @@ const initialState: Props = {
   isLoading: true,
 }
 
-const starShipDetailsSlice = createSlice({
-  name: 'starShipDetails',
+const starshipDetailsSlice = createSlice({
+  name: 'starshipDetails',
   initialState,
   reducers: {
     setData: (state, action) => {
@@ -74,14 +74,14 @@ const starShipDetailsSlice = createSlice({
   },
 })
 
-const { setData, setError, setLoading, setFilms, setPilots } = starShipDetailsSlice.actions
+const { setData, setError, setLoading, setFilms, setPilots } = starshipDetailsSlice.actions
 
-export default starShipDetailsSlice.reducer
+export default starshipDetailsSlice.reducer
 
 // thunks
 
 // We make a request to the individual endpoint to receive the detailed information and execute the sub functions that extract the necessary information from other endpoints to display on the screen.
-export const getStarShipDetails = (url: string) => {
+export const getStarshipDetails = (url: string) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {

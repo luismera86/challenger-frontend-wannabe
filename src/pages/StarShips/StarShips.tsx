@@ -1,10 +1,10 @@
 import { LayoutPages, ListContainer, Loading, PaginationButtons, SearchBar } from '@/components'
-import { getRespData, getSearchedData, getSearchedDataPage } from '@/redux/features/slices/starShips/starShipsDataSlice'
+import { getRespData, getSearchedData, getSearchedDataPage } from '@/redux/features/slices/starships/starshipsDataSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/app'
 import { useEffect, useState } from 'react'
 
-const StarShips = () => {
-  const starShips = useAppSelector((state) => state.starShipsData)
+const Starships = () => {
+  const starships = useAppSelector((state) => state.starshipsData)
   const dispatch = useAppDispatch()
 
   const [page, setPage] = useState(1)
@@ -26,9 +26,9 @@ const StarShips = () => {
     }
   }, [searchResults])
 
-  const { dataStarShips, isLoading } = starShips
+  const { dataStarships, isLoading } = starships
 
-  const { results, next } = dataStarShips
+  const { results, next } = dataStarships
   return (
     <LayoutPages title='NAVES ESTELARES'>
       <SearchBar searchResults={searchResults} setSearchResults={setSearchResults} />
@@ -37,4 +37,4 @@ const StarShips = () => {
     </LayoutPages>
   )
 }
-export default StarShips
+export default Starships

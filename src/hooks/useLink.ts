@@ -2,7 +2,7 @@ import { getCharacterDetails } from '@/redux/features/slices/characters/characte
 import { getFilmsDetails } from '@/redux/features/slices/films/filmsDetailsSlice'
 import { getPlanetDetails } from '@/redux/features/slices/planets/planetsDetailsSlice'
 import { getSpecieDetails } from '@/redux/features/slices/species/speciesDetailsSlice'
-import { getStarShipDetails } from '@/redux/features/slices/starShips/starShipsDetailsSlice'
+import { getStarshipDetails } from '@/redux/features/slices/starships/starshipsDetailsSlice'
 import { getVehicleDetails } from '@/redux/features/slices/vehicles/vehiclesDetailsSlice'
 import { useAppDispatch } from '@/redux'
 import { useNavigate } from 'react-router-dom'
@@ -21,8 +21,8 @@ export const useLink = () => {
     dispatch(getCharacterDetails(url))
     navigate('/characterdetails')
   }
-  const onHandleRedirectStarShip = (url: string) => {
-    dispatch(getStarShipDetails(url))
+  const onHandleRedirectStarship = (url: string) => {
+    dispatch(getStarshipDetails(url))
     navigate('/starshipdetails')
   }
 
@@ -44,7 +44,7 @@ export const useLink = () => {
   return {
     onHandleRedirectCharacter,
     onHandleRedirectSpecie,
-    onHandleRedirectStarShip,
+    onHandleRedirectStarship,
     onHandleRedirectVehicle,
     onHandleRedirectFilm,
     onHandledRedirectPlanet,

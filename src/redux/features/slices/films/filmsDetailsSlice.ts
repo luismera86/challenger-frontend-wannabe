@@ -68,7 +68,7 @@ const filmsDetailsSlice = createSlice({
       }
       return state
     },
-    setStarShips: (state, action) => {
+    setStarships: (state, action) => {
       state.data = {
         ...state.data,
         starships: action.payload,
@@ -92,7 +92,7 @@ const filmsDetailsSlice = createSlice({
   },
 })
 
-const { setData, setError, setLoading, setCharacters, setPlanets, setSpecies, setStarShips, setVehicles } =
+const { setData, setError, setLoading, setCharacters, setPlanets, setSpecies, setStarships, setVehicles } =
   filmsDetailsSlice.actions
 
 export default filmsDetailsSlice.reducer
@@ -110,7 +110,7 @@ export const getFilmsDetails = (url: string) => {
 
       dispatch(setterCharacters(data))
       dispatch(setterPlantes(data))
-      dispatch(setterStarShips(data))
+      dispatch(setterStarships(data))
       dispatch(setterVehicles(data))
       dispatch(setterSpecies(data))
      
@@ -170,21 +170,21 @@ const setterPlantes = (data: any) => {
 }
 
 // It takes the information from the array of endpoints and sends requests one by one to extract the name of the starship and the link to be reused with the hook useLink and redirect to the detail, and insert it in the state to be displayed in the detail screen.
-const setterStarShips = (data: any) => {
+const setterStarships = (data: any) => {
   return (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {
-      dispatch(setStarShips([]))
+      dispatch(setStarships([]))
 
-      let starShipsNames: object[] = []
+      let starshipsNames: object[] = []
       data.starships.forEach(async (url: string) => {
         const resp = await axios.get(url)
         const data = await resp.data
-        starShipsNames = [...starShipsNames, {
+        starshipsNames = [...starshipsNames, {
           name: data.name,
           link: url
         }]
-        dispatch(setStarShips(starShipsNames))
+        dispatch(setStarships(starshipsNames))
       })
     } catch (error) {
       console.log(error)

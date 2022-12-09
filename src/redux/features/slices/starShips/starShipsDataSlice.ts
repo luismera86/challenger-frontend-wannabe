@@ -4,16 +4,16 @@ import { AppDispatch } from '@/redux/app'
 import axios from 'axios'
 import { createSlice } from '@reduxjs/toolkit'
 
-const { Url_StarShips } = Urls
+const { Url_Starships } = Urls
 
 interface Props {
-  dataStarShips: RespData<Starship>
+  dataStarships: RespData<Starship>
   isLoading: boolean
   error: string
 }
 
 const initialState: Props = {
-  dataStarShips: {
+  dataStarships: {
     count: 0,
     next: null,
     previous: null,
@@ -23,21 +23,21 @@ const initialState: Props = {
   isLoading: true,
 }
 
-const starShipsDataSlice = createSlice({
-  name: 'starShipsData',
+const starshipsDataSlice = createSlice({
+  name: 'starshipsData',
   initialState,
   reducers: {
     setData: (state, action) => {
       state = {
         ...state,
-        dataStarShips: action.payload,
+        dataStarships: action.payload,
       }
       return state
     },
     setSearchData: (state, action) => {
       state = {
         ...state,
-        dataStarShips: action.payload,
+        dataStarships: action.payload,
       }
       return state
     },
@@ -58,9 +58,9 @@ const starShipsDataSlice = createSlice({
   },
 })
 
-const { setSearchData, setError, setData, setLoading } = starShipsDataSlice.actions
+const { setSearchData, setError, setData, setLoading } = starshipsDataSlice.actions
 
-export default starShipsDataSlice.reducer
+export default starshipsDataSlice.reducer
 
 // thunks
 
@@ -69,7 +69,7 @@ export const getRespData = (page: number) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {
-      const resp = await axios.get(`${Url_StarShips}/?page=${page}`)
+      const resp = await axios.get(`${Url_Starships}/?page=${page}`)
       const data = await resp.data
 
       dispatch(setData(data))
@@ -86,7 +86,7 @@ export const getSearchedData = (searchResults: string) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {
-      const resp = await axios.get(`${Url_StarShips}/?search=${searchResults}`)
+      const resp = await axios.get(`${Url_Starships}/?search=${searchResults}`)
       const data = await resp.data
       dispatch(setSearchData(data))
     } catch (error) {
@@ -102,7 +102,7 @@ export const getSearchedDataPage = (page: number) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
     try {
-      const resp = await axios.get(`${Url_StarShips}/?search=l&page=${page}`)
+      const resp = await axios.get(`${Url_Starships}/?search=l&page=${page}`)
       const data = await resp.data
 
       dispatch(setData(data))

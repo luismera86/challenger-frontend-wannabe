@@ -4,9 +4,9 @@ import { Loading } from '@/components'
 import { useAppSelector } from '@/redux'
 import { useLink } from '@/hooks'
 
-const StarShipDetails = () => {
-  const starShip = useAppSelector((state) => state.starShipDetails)
-  const { data, isLoading } = starShip
+const StarshipDetails = () => {
+  const starship = useAppSelector((state) => state.starshipDetails)
+  const { data, isLoading } = starship
   const {onHandleRedirectFilm, onHandleRedirectCharacter} = useLink()
 
   return (
@@ -52,4 +52,4 @@ const StarShipDetails = () => {
     </Container>
   )
 }
-export default StarShipDetails
+export default StarshipDetails

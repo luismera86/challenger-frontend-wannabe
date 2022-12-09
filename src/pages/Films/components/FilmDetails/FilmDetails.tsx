@@ -8,7 +8,7 @@ const FilmDetails = () => {
   const films = useAppSelector((state) => state.filmsDetail)
   const { data, isLoading } = films
   
-  const {onHandleRedirectCharacter, onHandleRedirectSpecie, onHandleRedirectStarShip,onHandleRedirectVehicle, onHandledRedirectPlanet} = useLink()
+  const {onHandleRedirectCharacter, onHandleRedirectSpecie, onHandleRedirectStarship,onHandleRedirectVehicle, onHandledRedirectPlanet} = useLink()
  
 
   return (
@@ -50,7 +50,7 @@ const FilmDetails = () => {
                 <p>
                   Naves Estelares:
                   {data.starships.map((p, index) => (
-                    <span onClick={() => onHandleRedirectStarShip(p.link)} className='ms-1 links' key={index}>
+                    <span onClick={() => onHandleRedirectStarship(p.link)} className='ms-1 links' key={index}>
                       {p.name} -
                     </span>
                   ))}
