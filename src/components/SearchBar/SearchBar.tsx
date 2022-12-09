@@ -32,3 +32,11 @@ const SearchBar = ({ searchResults, setSearchResults }: Props) => {
   )
 }
 export default SearchBar
+
+/* 
+
+SearchBar
+
+The search bar is associated to the search endpoint provided by the api, used by redux .
+
+*/

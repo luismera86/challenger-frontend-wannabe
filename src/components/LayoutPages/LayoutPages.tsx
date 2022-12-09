@@ -18,3 +18,8 @@ const LayoutPages = ({ title, children }: LayoutPagesProps) => {
   )
 }
 export default LayoutPages
+
+/* 
+LayoutPages
+This reusable component is used to start the container of each page with its title, which can be assigned by parameters
+*/

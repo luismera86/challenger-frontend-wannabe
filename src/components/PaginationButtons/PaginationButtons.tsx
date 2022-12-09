@@ -39,3 +39,11 @@ const PaginationButtons = ({ page, setPage, next }: Props) => {
   )
 }
 export default PaginationButtons
+
+/* 
+PaginationButtons
+
+Los botones de pagination funcionan como un contador que suma o resta el número de página.
+Detecta cuando una pagina es menor que 1 el button desaparece para no poder seguir retrocediendo, en caso de recibir un null por parte de la api el button de avanzar desaparece
+
+*/

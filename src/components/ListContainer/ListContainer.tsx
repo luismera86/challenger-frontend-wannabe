@@ -40,3 +40,12 @@ const ListContainer = ({ results }: Props) => {
   )
 }
 export default ListContainer
+
+/* 
+ListContainer
+
+This component is in charge of receiving the data from the state of redux. 
+It performs a mapping of the information showing individually the names or titles of each element and character.
+Each element or character has its own detail button that directs to the properties of each one, it is associated to an onHandleClick function that determines by means of conditionals to know what type of information it has to show, executing a function emitted by a custom hook useLink().
+
+*/
