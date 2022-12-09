@@ -76,6 +76,7 @@ export default planetDetailsSlice.reducer
 
 // thunks
 
+// We make a request to the individual endpoint to receive the detailed information and execute the sub functions that extract the necessary information from other endpoints to display on the screen.
 export const getPlanetDetails = (url: string) => {
   return async (dispatch: AppDispatch) => {
     try {
@@ -92,7 +93,7 @@ export const getPlanetDetails = (url: string) => {
   }
 }
 
-
+// It takes the information from the array of endpoints and sends requests one by one to extract the movie title and the link to be reused with the useLink hook and redirect to the detail, and insert it in the state to be displayed in the detail screen.
 const setterFilms = (data: any) => {
   return (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
@@ -116,6 +117,7 @@ const setterFilms = (data: any) => {
   }
 }
 
+// It takes the information from the array of endpoints and sends requests one by one to extract the character name and the link to be reused with the useLink hook and redirect to the detail, and insert it in the state to be displayed in the detail screen.
 const setterResidents = (data: any) => {
   return (dispatch: AppDispatch) => {
     dispatch(setLoading(true))

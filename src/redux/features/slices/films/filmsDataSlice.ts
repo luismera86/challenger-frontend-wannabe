@@ -64,6 +64,7 @@ export default filmsDataSlice.reducer
 
 // thunks
 
+// The api information is received paginated, we make one request at a time by page number.
 export const getRespData = (page: number) => {
   return async (dispatch: AppDispatch) => {
     try {
@@ -79,6 +80,7 @@ export const getRespData = (page: number) => {
   }
 }
 
+// We do a search request for the values sent from the search bar
 export const getSearchedData = (searchResults: string) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
@@ -94,6 +96,7 @@ export const getSearchedData = (searchResults: string) => {
   }
 }
 
+// In case the search result arrives paginated, we perform a request by result page number.
 export const getSearchedDataPage = (page: number) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))

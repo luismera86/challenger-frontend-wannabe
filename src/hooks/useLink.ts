@@ -11,6 +11,7 @@ export const useLink = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
+  // Performs a set of the details obtained from the api in the state and redirects to the path where the details will be displayed. 
   const onHandledRedirectPlanet = (url: string) => {
     dispatch(getPlanetDetails(url))
     navigate('/planetdetails')

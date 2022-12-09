@@ -99,6 +99,7 @@ export default filmsDetailsSlice.reducer
 
 // thunks
 
+// We make a request to the individual endpoint to receive the detailed information and execute the sub functions that extract the necessary information from other endpoints to display on the screen.
 export const getFilmsDetails = (url: string) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
@@ -122,6 +123,7 @@ export const getFilmsDetails = (url: string) => {
   }
 }
 
+// It takes the information from the array of endpoints and sends requests one by one to extract the character name and the link to be reused with the useLink hook and redirect to the detail, and insert it in the state to be displayed in the detail screen.
 const setterCharacters = (data: any) => {
   return (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
@@ -144,6 +146,7 @@ const setterCharacters = (data: any) => {
   }
 }
 
+// It takes the information from the array of endpoints and sends requests one by one to extract the name of the planet and the link to be reused with the hook useLink and redirect to the detail, and insert it in the state to be displayed in the detail screen.
 const setterPlantes = (data: any) => {
   return (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
@@ -166,6 +169,7 @@ const setterPlantes = (data: any) => {
   }
 }
 
+// It takes the information from the array of endpoints and sends requests one by one to extract the name of the starship and the link to be reused with the hook useLink and redirect to the detail, and insert it in the state to be displayed in the detail screen.
 const setterStarShips = (data: any) => {
   return (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
@@ -188,6 +192,7 @@ const setterStarShips = (data: any) => {
   }
 }
 
+// It takes the information from the array of endpoints and sends requests one by one to extract the name of the vehicle and the link to be reused with the hook useLink and redirect to the detail, and insert it in the state to be displayed in the detail screen.
 const setterVehicles = (data: any) => {
   return (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
@@ -210,6 +215,7 @@ const setterVehicles = (data: any) => {
   }
 }
 
+// It takes the information from the array of endpoints and sends requests one by one to extract the species name and the link to be reused with the hook useLink and redirect to the detail, and insert it in the state to be displayed in the detail screen.
 const setterSpecies = (data: any) => {
   return (dispatch: AppDispatch) => {
     dispatch(setLoading(true))
