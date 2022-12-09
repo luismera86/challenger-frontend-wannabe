@@ -28,7 +28,7 @@ const ListContainer = ({ results }: Props) => {
     <Container className='text-white-50 fs-5'>
       {results?.map((data) => (
         <Row className='mt-3' key={data.name || data.title}>
-          <Col xs={3}>{data.name || data.title} </Col>
+          <Col  xs={3}>{data.name || data.title} </Col>
           <Col>
             <Button className='ms-3' variant='outline-warning' size='sm' onClick={() => onHandleClick(data.url)}>
               Detalles
